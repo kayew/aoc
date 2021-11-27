@@ -2,4 +2,4 @@
 
 Advent of Code 2021 Solutions
 
-##### Licencsed under ISC
+##### Licensed under ISC
