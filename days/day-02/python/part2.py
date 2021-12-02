@@ -17,12 +17,13 @@ depth = 0
 aim = 0
 
 for move in data:
+    dir = int(move[1])
     if move[0] == 'forward':
-        xPos += int(move[1])
-        depth += aim * int(move[1])
+        xPos += dir
+        depth += aim * dir
     elif move[0] == 'up':
-        aim -= int(move[1])
+        aim -= dir
     elif move[0] == 'down':
-        aim += int(move[1])
+        aim += dir
 
 print(f"Part 2: {xPos*depth}")
