@@ -1,0 +1,5 @@
+in input file, while True
+if str starts with +,
+    take int and add to finalVal
+    elif str starts with -.
+    take int and sub from finalVal
