@@ -2,9 +2,7 @@ const std = @import("std");
 const print = std.debug.print;
 const allocator = std.heap.page_allocator;
 
-fn parse() ![]usize {
-    const input = @embedFile("day01_input.txt");
-
+fn parse(input: []const u8) ![]usize {
     var max = std.ArrayList(usize).init(allocator);
 
     var data_it = std.mem.split(u8, input, "\n\n");
@@ -36,6 +34,14 @@ fn part2(input: []usize) !usize {
 }
 
 pub fn main() !void {
-    const d = try parse();
+    const input = @embedFile("day01_input.txt");
+    const d = try parse(input);
     print("Part 1: {any}\nPart 2: {any}", .{ part1(d), part2(d) });
+}
+
+test "example input" {
+    const input = @embedFile("day01_example.txt");
+    const d = try parse(input);
+    try std.testing.expect(try part1(d) == 24000);
+    try std.testing.expect(try part2(d) == 45000);
 }
