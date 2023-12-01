@@ -63,8 +63,8 @@ pub fn main() !void {
     defer _ = gpa.deinit();
     const allocator = gpa.allocator();
 
-    const input = @embedFile("day04_input.txt");
-    const d = try parse(allocator, input);
+	const input = @embedFile("day04_input.txt");
+	const d = try parse(allocator, input);
     defer allocator.free(d);
     print("{d}\n", .{try part1(d)});
     print("{d}\n", .{try part2(d)});
