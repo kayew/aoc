@@ -1,6 +1,5 @@
 from sys import argv
 import re
-import array as arr
 
 num = {
     "one": '1',
@@ -14,11 +13,11 @@ num = {
     "nine": '9'
 }
 
-def digit_calibration(d) -> int:
-    out = [n for n in d if n.isdigit()]
+def digit_calibration(d):
+    out = [[c for c in line if c.isdigit()] for line in d]
     return sum([int(x[0]+x[-1]) for x in out])
 
-def letter_calibration(d) -> int:
+def letter_calibration(d):
     regex = r"(?=(1|2|3|4|5|6|7|8|9|one|two|three|four|five|six|seven|eight|nine))" 
     match = [[num[letter] if not letter.isdigit() else letter for letter in re.findall(regex, n)] for n in d]
     # match = [re.findall(regex, n) for n in d]
@@ -28,5 +27,6 @@ def letter_calibration(d) -> int:
     #             dig[i] = num[dig[i]]
     return sum([int(x[0]+x[-1]) for x in match])
     
-d = open(argv[1]).read().split()
-
+d = open(argv[1]).read().splitlines()
+print(f"Part 1: {digit_calibration(d)}")
+print(f"Part 2: {letter_calibration(d)}")
